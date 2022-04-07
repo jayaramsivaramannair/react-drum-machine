@@ -16,7 +16,31 @@ body {
   height: 500px;
 }
 
-.controls-buttons {
+#drum-machine {
   display: grid;
-  grid-template-columns: repeat(2, 250px);
+  grid-template-columns: repeat(2, 375px);
+}
+
+.buttons {
+  border: 1px greenyellow solid;
+  margin-right: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-column-gap: 20px;
+}
+
+.drum-pad {
+  width: 100px;
+  height: 100px;
+  background-color: gray;
+  margin: 5px;
+  border: 1px solid black;
+  border-radius: 3px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 100px;
+}
+
+.controls {
+  border: 1px palevioletred solid;
 }
