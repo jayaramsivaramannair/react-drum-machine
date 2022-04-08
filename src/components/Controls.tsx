@@ -1,11 +1,35 @@
 import React from 'react'
 
-function Controls() {
+interface controlProps {
+  powerOn: boolean
+  setPowerOn: React.Dispatch<React.SetStateAction<boolean>>
+  bankOn: boolean
+  setBankOn: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const Controls: React.FC<controlProps> = ({
+  powerOn,
+  setPowerOn,
+  bankOn,
+  setBankOn,
+})  => {
+
+  const togglePower = () => {
+    setPowerOn(!powerOn)
+  }
+
+  const toggleBank = () => {
+    setBankOn(!bankOn)
+  }
+
   return (
     <div className="controls">
       <div className="toggle-switch">
           Power
-          <div className="switch"></div>
+          <div className="switch" onClick={togglePower}>
+            <div className="switch-off" style={{backgroundColor: !powerOn ? 'blue' : 'black'}}></div>
+            <div className="switch-on" style={{backgroundColor: powerOn ? 'blue' : 'black'}}></div>
+          </div>
       </div>
       <div className="display">
 
@@ -15,7 +39,10 @@ function Controls() {
       </div>
       <div className="toggle-switch">
         Bank
-        <div className="switch"></div>
+        <div className="switch" onClick={toggleBank}>
+            <div className="switch-off" style={{backgroundColor: !bankOn ? 'blue' : 'black'}}></div>
+            <div className="switch-on" style={{backgroundColor: bankOn ? 'blue' : 'black'}}></div>
+        </div>
       </div>
     </div>
   )

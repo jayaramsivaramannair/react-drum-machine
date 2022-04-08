@@ -22,7 +22,6 @@ body {
 }
 
 .buttons {
-  border: 1px greenyellow solid;
   margin-right: 10px;
   display: grid;
   grid-template-columns: repeat(3, 100px);
@@ -50,7 +49,9 @@ body {
 }
 
 .controls {
-  border: 1px palevioletred solid;
+  display: grid;
+  grid-template-columns: repeat(1, 100%);
+  justify-items: center;
 }
 
 .toggle-switch {
@@ -58,17 +59,33 @@ body {
   grid-template-columns: repeat(1, 75px);
   justify-items: center;
   width: 75px;
-  border: 1px palevioletred solid;
 }
 
 .switch {
+  height: 30px;
+  width: 55px;
+  cursor: pointer;
+  background-color: black;
+  display: grid;
+  grid-template-columns: repeat(2, 25px);
+  justify-items: center;
+  align-items: center;
+}
+
+.switch-off {
+  width: 25px;
   height: 25px;
-  width: 50px;
-  background-color: green;
+}
+
+.switch-on {
+  width: 25px;
+  height: 25px;
 }
 
 .display {
   width: 250px;
   height: 75px;
+  outline: none;
+  border-radius: 2px;
   background-color: palevioletred;
 }
