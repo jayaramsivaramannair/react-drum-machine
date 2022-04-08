@@ -31,6 +31,8 @@ body {
 
 .drum-pad {
   width: 100px;
+  cursor: pointer;
+  outline: none;
   height: 100px;
   background-color: gray;
   margin: 5px;
@@ -39,8 +41,34 @@ body {
   text-align: center;
   vertical-align: middle;
   line-height: 100px;
+  box-shadow: black 3px 3px 5px;
+}
+
+.drum-pad:active {
+  background-color: orange;
+  transform: translateY(4px);
 }
 
 .controls {
   border: 1px palevioletred solid;
+}
+
+.toggle-switch {
+  display: grid;
+  grid-template-columns: repeat(1, 75px);
+  justify-items: center;
+  width: 75px;
+  border: 1px palevioletred solid;
+}
+
+.switch {
+  height: 25px;
+  width: 50px;
+  background-color: green;
+}
+
+.display {
+  width: 250px;
+  height: 75px;
+  background-color: palevioletred;
 }
