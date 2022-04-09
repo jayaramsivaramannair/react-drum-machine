@@ -1,4 +1,5 @@
 import React from 'react'
+import Slider from './Slider'
 
 interface controlProps {
   powerOn: boolean
@@ -43,9 +44,7 @@ const Controls: React.FC<controlProps> = ({
           </div>
       </div>
       <div className="display"><p>{displayValue}</p></div>
-      <div className="volume">
-
-      </div>
+      <Slider />
       <div className="toggle-switch">
         Bank
         <div className="switch" onClick={toggleBank}>
