@@ -5,6 +5,8 @@ interface controlProps {
   setPowerOn: React.Dispatch<React.SetStateAction<boolean>>
   bankOn: boolean
   setBankOn: React.Dispatch<React.SetStateAction<boolean>>
+  displayValue: string
+  setDisplayValue: React.Dispatch<React.SetStateAction<string>>
 }
 
 const Controls: React.FC<controlProps> = ({
@@ -12,6 +14,8 @@ const Controls: React.FC<controlProps> = ({
   setPowerOn,
   bankOn,
   setBankOn,
+  displayValue,
+  setDisplayValue
 })  => {
 
   const togglePower = () => {
@@ -19,7 +23,14 @@ const Controls: React.FC<controlProps> = ({
   }
 
   const toggleBank = () => {
-    setBankOn(!bankOn)
+    if (powerOn) {
+      setBankOn(!bankOn)
+    if (!bankOn) {
+      setDisplayValue('Smooth Piano Kit')
+    } else {
+      setDisplayValue('Heater Kit')
+    }
+    }
   }
 
   return (
@@ -31,9 +42,7 @@ const Controls: React.FC<controlProps> = ({
             <div className="switch-on" style={{backgroundColor: powerOn ? 'blue' : 'black'}}></div>
           </div>
       </div>
-      <div className="display">
-
-      </div>
+      <div className="display"><p>{displayValue}</p></div>
       <div className="volume">
 
       </div>

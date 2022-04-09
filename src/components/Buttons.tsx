@@ -7,6 +7,7 @@ interface buttonProps {
   setPlay: React.Dispatch<React.SetStateAction<boolean>>
   bankOn: boolean
   setBankOn: React.Dispatch<React.SetStateAction<boolean>>
+  setDisplayValue: React.Dispatch<React.SetStateAction<string>>
 }
 
 interface IAudioClip {
@@ -20,52 +21,53 @@ const Buttons: React.FC<buttonProps> = ({
   setPlay,
   bankOn,
   setBankOn,
+  setDisplayValue,
 }) => {
 
   const drumPads = ['Q', 'W', 'E', 'A', 'S', 'D', 'Z', 'X', 'C']
   const heaterAudio : IAudioClip = {
-    'Q': 'Heater1',
-    'W': 'Heater2',
-    'E': 'Heater3',
-    'A': 'Heater4',
+    'Q': 'Heater-1',
+    'W': 'Heater-2',
+    'E': 'Heater-3',
+    'A': 'Heater-4',
     'S': 'Clap',
-    'D': 'OpenHHH',
-    'Z': 'KickNHat',
+    'D': 'Open-HH-Heater',
+    'Z': 'Kick-N-Hat',
     'X': 'Kick',
-    'C': 'ClosedHHH'
+    'C': 'Closed-HH-Heater'
   }
 
   const pianoAudio : IAudioClip = {
-    'Q': 'Chord1',
-    'W': 'Chord2',
-    'E': 'Chord3',
+    'Q': 'Chord-1',
+    'W': 'Chord-2',
+    'E': 'Chord-3',
     'A': 'Shaker',
-    'S': 'OpenHH',
-    'D': 'ClosedHH',
-    'Z': 'PunchyKick',
-    'X': 'SideStick',
+    'S': 'Open-HH',
+    'D': 'Closed-HH',
+    'Z': 'Punchy-Kick',
+    'X': 'Side-Stick',
     'C': 'Snare',
   }
 
   const AudioClip :  IAudioClip = {
-    'Chord1' : '/audio/Chord_1.mp3',
-    'Chord2' : '/audio/Chord_2.mp3',
-    'Chord3' : '/audio/Chord_3.mp3',
+    'Chord-1' : '/audio/Chord_1.mp3',
+    'Chord-2' : '/audio/Chord_2.mp3',
+    'Chord-3' : '/audio/Chord_3.mp3',
     'Shaker' : '/audio/Shaker.mp3',
-    'OpenHH' : '/audio/Open HH.mp3',
-    'ClosedHH': '/audio/Closed HH.mp3',
-    'PunchyKick': '/audio/Punchy Kick.mp3',
-    'SideStick': '/audio/Side Stick.mp3',
+    'Open-HH' : '/audio/Open HH.mp3',
+    'Closed-HH': '/audio/Closed HH.mp3',
+    'Punchy-Kick': '/audio/Punchy Kick.mp3',
+    'Side-Stick': '/audio/Side Stick.mp3',
     'Snare' : '/audio/Snare.mp3',
-    'Heater1': '/audio/Heater 1.mp3',
-    'Heater2': '/audio/Heater 2.mp3',
-    'Heater3': '/audio/Heater 3.mp3',
-    'Heater4': '/audio/Heater 4.mp3',
+    'Heater-1': '/audio/Heater 1.mp3',
+    'Heater-2': '/audio/Heater 2.mp3',
+    'Heater-3': '/audio/Heater 3.mp3',
+    'Heater-4': '/audio/Heater 4.mp3',
     'Clap' : '/audio/Clap.mp3',
-    'OpenHHH': '/audio/Open HH-Heater.mp3', 
-    'KickNHat': '/audio/Kick N Hat.mp3',
+    'Open-HH-Heater': '/audio/Open HH-Heater.mp3', 
+    'Kick-N-Hat': '/audio/Kick N Hat.mp3',
     'Kick': '/audio/Kick.mp3',
-    'ClosedHHH' : '/audio/Closed HH-Heater.mp3',
+    'Closed-HH-Heater' : '/audio/Closed HH-Heater.mp3',
   }
 
   const selectAudio = (bankMode : boolean, keyValue : string) => {
@@ -91,9 +93,19 @@ const Buttons: React.FC<buttonProps> = ({
     myAudio.volume = 0.75
   }
 
+  const selectDisplayValue = (bankOn: boolean, keyValue: string) => {
+    if (bankOn) {
+      return pianoAudio[keyValue].replaceAll('-', ' ')
+    } else {
+      return heaterAudio[keyValue].replaceAll('-', ' ')
+    }
+  }
+
   const clickHandler = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
       const selectedAudio = selectAudio(bankOn, event.currentTarget.innerText)
-      console.log(selectedAudio)
+      if (powerOn) {
+        setDisplayValue(selectDisplayValue(bankOn, event.currentTarget.innerText))
+      }
       playClip(selectedAudio)
   }
   return (
@@ -107,7 +119,6 @@ const Buttons: React.FC<buttonProps> = ({
                   </div>
         })
       }
-      
     </div>
   )
 }
