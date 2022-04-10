@@ -8,6 +8,7 @@ function Shell() {
   const [displayValue, setDisplayValue] = useState('')
   const [play, setPlay] = useState(true)
   const [sliderValue, setSliderValue] = useState("0")
+  const [drumID, setDrumID] = useState("")
   return (
     <div>
       JSN DRUM MACHINE
@@ -22,6 +23,8 @@ function Shell() {
           setDisplayValue={setDisplayValue}
           sliderValue = {sliderValue}
           setSliderValue = {setSliderValue}
+          drumID = {drumID}
+          setDrumID = {setDrumID}
         />
         <Controls 
           powerOn = {powerOn}

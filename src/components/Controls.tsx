@@ -47,7 +47,7 @@ const Controls: React.FC<controlProps> = ({
             <div className="switch-on" style={{backgroundColor: powerOn ? 'blue' : 'black'}}></div>
           </div>
       </div>
-      <div className="display"><p>{displayValue}</p></div>
+      <div id="display"><p>{displayValue}</p></div>
       <Slider 
         displayValue={displayValue} 
         setDisplayValue={setDisplayValue} 

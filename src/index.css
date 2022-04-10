@@ -83,7 +83,7 @@ body {
   height: 25px;
 }
 
-.display {
+#display {
   width: 250px;
   height: 75px;
   text-align: center;

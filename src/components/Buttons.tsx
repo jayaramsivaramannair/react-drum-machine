@@ -10,6 +10,8 @@ interface buttonProps {
   setDisplayValue: React.Dispatch<React.SetStateAction<string>>
   sliderValue: string
   setSliderValue: React.Dispatch<React.SetStateAction<string>>
+  drumID: string
+  setDrumID: React.Dispatch<React.SetStateAction<string>>
 }
 
 interface IAudioClip {
@@ -25,7 +27,9 @@ const Buttons: React.FC<buttonProps> = ({
   setBankOn,
   setDisplayValue,
   sliderValue,
-  setSliderValue
+  setSliderValue,
+  drumID,
+  setDrumID,
 }) => {
 
   const drumPads = ['Q', 'W', 'E', 'A', 'S', 'D', 'Z', 'X', 'C']
@@ -99,9 +103,13 @@ const Buttons: React.FC<buttonProps> = ({
 
   const selectDisplayValue = (bankOn: boolean, keyValue: string) => {
     if (bankOn) {
-      return pianoAudio[keyValue].replaceAll('-', ' ')
+      const audioDescription = pianoAudio[keyValue].replaceAll('-', ' ')
+      setDrumID(audioDescription)
+      return audioDescription
     } else {
-      return heaterAudio[keyValue].replaceAll('-', ' ')
+      const audioDescription = heaterAudio[keyValue].replaceAll('-', ' ')
+      setDrumID(audioDescription)
+      return audioDescription
     }
   }
 
@@ -118,6 +126,7 @@ const Buttons: React.FC<buttonProps> = ({
         drumPads.map((pad, index) => {
           return <div key={index} className="drum-pad" 
                     onClick = {(e) => clickHandler(e)}
+                    id = {drumID}
                   >
                     {pad}
                   </div>
