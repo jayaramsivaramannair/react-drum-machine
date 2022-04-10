@@ -44,7 +44,7 @@ const Controls: React.FC<controlProps> = ({
           </div>
       </div>
       <div className="display"><p>{displayValue}</p></div>
-      <Slider />
+      <Slider displayValue={displayValue} setDisplayValue={setDisplayValue} powerOn={powerOn}/>
       <div className="toggle-switch">
         Bank
         <div className="switch" onClick={toggleBank}>
