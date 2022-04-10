@@ -8,6 +8,8 @@ interface buttonProps {
   bankOn: boolean
   setBankOn: React.Dispatch<React.SetStateAction<boolean>>
   setDisplayValue: React.Dispatch<React.SetStateAction<string>>
+  sliderValue: string
+  setSliderValue: React.Dispatch<React.SetStateAction<string>>
 }
 
 interface IAudioClip {
@@ -22,6 +24,8 @@ const Buttons: React.FC<buttonProps> = ({
   bankOn,
   setBankOn,
   setDisplayValue,
+  sliderValue,
+  setSliderValue
 }) => {
 
   const drumPads = ['Q', 'W', 'E', 'A', 'S', 'D', 'Z', 'X', 'C']
@@ -90,7 +94,7 @@ const Buttons: React.FC<buttonProps> = ({
     if (powerOn) {
       myAudio.play();
     }
-    myAudio.volume = 0.75
+    myAudio.volume = parseInt(sliderValue) / 100
   }
 
   const selectDisplayValue = (bankOn: boolean, keyValue: string) => {

@@ -8,6 +8,8 @@ interface controlProps {
   setBankOn: React.Dispatch<React.SetStateAction<boolean>>
   displayValue: string
   setDisplayValue: React.Dispatch<React.SetStateAction<string>>
+  sliderValue: string
+  setSliderValue: React.Dispatch<React.SetStateAction<string>>
 }
 
 const Controls: React.FC<controlProps> = ({
@@ -16,7 +18,9 @@ const Controls: React.FC<controlProps> = ({
   bankOn,
   setBankOn,
   displayValue,
-  setDisplayValue
+  setDisplayValue,
+  sliderValue,
+  setSliderValue
 })  => {
 
   const togglePower = () => {
@@ -44,7 +48,13 @@ const Controls: React.FC<controlProps> = ({
           </div>
       </div>
       <div className="display"><p>{displayValue}</p></div>
-      <Slider displayValue={displayValue} setDisplayValue={setDisplayValue} powerOn={powerOn}/>
+      <Slider 
+        displayValue={displayValue} 
+        setDisplayValue={setDisplayValue} 
+        powerOn={powerOn}
+        sliderValue = {sliderValue}
+        setSliderValue = {setSliderValue}
+      />
       <div className="toggle-switch">
         Bank
         <div className="switch" onClick={toggleBank}>

@@ -1,14 +1,20 @@
-import React, {useState} from 'react'
+import React from 'react'
 
 interface sliderProps {
   displayValue : string
   setDisplayValue: React.Dispatch<React.SetStateAction<string>>
   powerOn: boolean
+  sliderValue: string
+  setSliderValue: React.Dispatch<React.SetStateAction<string>>
 }
 
-const  Slider : React.FC<sliderProps> = ({displayValue, setDisplayValue, powerOn}) => {
-
-  const [sliderValue, setSliderValue] = useState("0")
+const  Slider : React.FC<sliderProps> = ({
+  displayValue, 
+  setDisplayValue, 
+  powerOn,
+  sliderValue,
+  setSliderValue,
+}) => {
   const updateSlider = (e: React.FormEvent<HTMLInputElement>) => {
     if (powerOn) {
       setSliderValue(e.currentTarget.value)

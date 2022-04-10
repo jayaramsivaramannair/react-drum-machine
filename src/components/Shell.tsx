@@ -7,6 +7,7 @@ function Shell() {
   const [bankOn, setBankOn] = useState(false)
   const [displayValue, setDisplayValue] = useState('')
   const [play, setPlay] = useState(true)
+  const [sliderValue, setSliderValue] = useState("0")
   return (
     <div>
       JSN DRUM MACHINE
@@ -19,6 +20,8 @@ function Shell() {
           bankOn = {bankOn}
           setBankOn = {setBankOn}
           setDisplayValue={setDisplayValue}
+          sliderValue = {sliderValue}
+          setSliderValue = {setSliderValue}
         />
         <Controls 
           powerOn = {powerOn}
@@ -27,6 +30,8 @@ function Shell() {
           setBankOn = {setBankOn}
           displayValue = {displayValue}
           setDisplayValue={setDisplayValue}
+          sliderValue = {sliderValue}
+          setSliderValue = {setSliderValue}
         />
       </div>
     </div>
