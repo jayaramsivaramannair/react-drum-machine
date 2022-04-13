@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: drum_machine
+    build: .
+    ports:
+      - '3000:3000'
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/app
+    

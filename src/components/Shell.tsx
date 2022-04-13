@@ -11,7 +11,7 @@ function Shell() {
   const [drumID, setDrumID] = useState("")
   return (
     <div>
-      JSN DRUM MACHINE
+      DRUM MACHINE
       <div id="drum-machine">
         <Buttons 
           powerOn = {powerOn}
